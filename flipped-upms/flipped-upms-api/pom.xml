@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>flipped-upms</artifactId>
+        <groupId>com.cwd</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+    <artifactId>flipped-upms-api</artifactId>
+    <description>通用用户权限管理系统公共api模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.cwd</groupId>
+            <artifactId>flipped-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cwd</groupId>
+            <artifactId>flipped-framework-mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cwd</groupId>
+            <artifactId>flipped-common-feign</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!-- excel 导入导出 https://github.com/pig-mesh/excel-spring-boot-starter -->
+        <dependency>
+            <groupId>com.pig4cloud.excel</groupId>
+            <artifactId>excel-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

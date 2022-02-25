@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cwd</groupId>
+    <artifactId>flipped-common-bom</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <swagger.core.version>1.6.2</swagger.core.version>
+        <common.version>${project.version}</common.version>
+        <velocity-engine.version>2.3</velocity-engine.version>
+        <velocity.tool.version>3.1</velocity.tool.version>
+        <mybatis-plus.version>3.4.1</mybatis-plus.version>
+        <mybatis-plus-generator.version>3.4.1</mybatis-plus-generator.version>
+        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
+        <dynamic-ds.version>3.5.0</dynamic-ds.version>
+        <p6spy.version>3.9.1</p6spy.version>
+        <excel.version>1.1.1</excel.version>
+        <druid.version>1.2.8</druid.version>
+    </properties>
+    <!-- 定义全局jar版本,模块使用需要再次引入但不用写版本号-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-gateway</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-common-core</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-upms-api</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-upms-biz</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-framework-mybatis</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-framework-datasource</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-framework-redis</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-common-log</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-security</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+
+            <!--   ==================================================================================================-->
+
+
+            <!-- swagger 最新依赖内置版本-->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <!--  代码生成模板引擎-->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity-engine.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity.tools</groupId>
+                <artifactId>velocity-tools-generic</artifactId>
+                <version>${velocity.tool.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <!-- mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+            <!--            动态数据源-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-ds.version}</version>
+            </dependency>
+            <!-- 数据库操作语句监控 -->
+            <dependency>
+                <groupId>p6spy</groupId>
+                <artifactId>p6spy</artifactId>
+                <version>${p6spy.version}</version>
+            </dependency>
+            <!-- excel 导入导出 -->
+            <dependency>
+                <groupId>com.pig4cloud.excel</groupId>
+                <artifactId>excel-spring-boot-starter</artifactId>
+                <version>${excel.version}</version>
+            </dependency>
+            <!-- druid数据源-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>

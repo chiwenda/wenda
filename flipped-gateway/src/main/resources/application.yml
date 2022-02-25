@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    gateway:
+      #      globalcors:
+      #        corsConfigurations:
+      #          '[/**]':
+      #            allowedOriginPatterns: "*"           #注意这个设置只对 spring boot 2.4+ 有效，低版本 使用  allowedOrigins: "*" 属性
+      #            allowed-methods: "*"
+      #            allowed-headers: "*"
+      #            allow-credentials: true
+      #            exposedHeaders: "Content-Disposition,Content-Type,Cache-Control"
+      routes:
+        #认证中心
+        - id: pig-auth
+          uri: lb://flipped-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            # 验证码处理
+            - ValidateCodeGatewayFilter
+            # 前端密码解密
+            - PasswordDecoderFilter
+        - id: flipped-upms-biz
+          uri: lb://flipped-upms-biz
+          predicates:
+            - Path=/admin/**
+        # 代码生成模块
+        - id: flipped-gen
+          uri: lb://flipped-gen
+          predicates:
+            - Path=/gen/**
+gateway:
+  encode-key: 'thanks,pig4cloud'
+  ignore-clients:
+    - test

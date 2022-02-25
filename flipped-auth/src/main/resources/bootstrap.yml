@@ -1,0 +1,23 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:127.0.0.1}:${NACOS_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  profiles:
+    active: @profiles.active@
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/flipped?serverTimezone=UTC
+    username: root
+    password: 123456
+
+debug: true

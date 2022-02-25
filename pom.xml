@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <packaging>pom</packaging>
+
+
+    <groupId>com.cwd</groupId>
+    <artifactId>flipped</artifactId>
+    <version>${revision}</version>
+    <name>${project.artifactId}</name>
+    <description>项目聚合服务骨架</description>
+
+
+
+
+    <modules>
+        <module>flipped-modules</module>
+        <module>flipped-gateway</module>
+        <module>flipped-framework</module>
+        <module>flipped-common</module>
+        <module>flipped-auth</module>
+        <module>flipped-upms</module>
+    </modules>
+
+
+    <properties>
+        <revision>0.0.1</revision>
+        <configuration.version>1.10</configuration.version>
+        <velocity.version>2.3</velocity.version>
+        <velocity.tool.version>3.1</velocity.tool.version>
+        <jasypt.version>3.0.3</jasypt.version>
+
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <spring-cloud.version>2020.0.4</spring-cloud.version>
+        <spring-boot.version>2.5.7</spring-boot.version>
+        <fastjson.version>1.2.78</fastjson.version>
+        <lombok.version>1.18.22</lombok.version>
+        <java.version>1.8</java.version>
+        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
+        <p6spy.version>3.9.1</p6spy.version>
+        <spring-boot.mybatis-plus>3.4.3.4</spring-boot.mybatis-plus>
+        <spring-boot-starter.mybatis>2.2.0</spring-boot-starter.mybatis>
+        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
+        <poi-ooxml.verison>4.1.2</poi-ooxml.verison>
+        <commons.io.version>2.11.0</commons.io.version>
+        <commons.fileupload.version>1.4</commons.fileupload.version>
+        <pagehelper.boot.version>1.4.1</pagehelper.boot.version>
+        <aliyun-oss.version>3.11.1</aliyun-oss.version>
+        <elasticsearch.version>7.12.0</elasticsearch.version>
+        <hutool.version>5.7.18</hutool.version>
+        <kaptcha.veriosn>2.3.2</kaptcha.veriosn>
+        <useragent.version>1.21</useragent.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <captcha.version>2.2.1</captcha.version>
+    </properties>
+
+    <!-- 以下依赖 全局所有的模块都会引入  -->
+    <dependencies>
+        <!--bootstrap 启动器-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <!--配置文件处理器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--配置文件加解密-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 公共版本定义 -->
+            <dependency>
+                <groupId>com.cwd</groupId>
+                <artifactId>flipped-common-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- springboot 依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- SpringCloud 微服务 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring cloud alibaba依赖 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- 阿里JSON解析器 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <!-- pagehelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.boot.version}</version>
+            </dependency>
+
+            <!-- mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
+            <!-- 日志分析插件 -->
+            <dependency>
+                <groupId>p6spy</groupId>
+                <artifactId>p6spy</artifactId>
+                <version>${p6spy.version}</version>
+            </dependency>
+
+            <!-- excel工具 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi-ooxml.verison}</version>
+            </dependency>
+
+            <!-- io常用工具类 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+
+            <!-- 文件上传工具类 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons.fileupload.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+
+    <!-- 设置java语言版本 -->
+    <build>
+        <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+
+
+</project>
